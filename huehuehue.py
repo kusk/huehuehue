@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
-# Small commandline controller for Philips Hue Lights using phue - https://github.com/studioimaginaire/phue
+# huehuehue - A small commandline controller for Philips Hue Lights.
+# By Anders Kusk - http://github.com/kusk/huehuehue
+# The script is using phue - https://github.com/studioimaginaire/phue
 
 
 
