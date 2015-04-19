@@ -9,7 +9,7 @@
 import sys, getopt
 from phue import Bridge
 
-def send_to_lamp(ip, lamp, state):
+def set_state(ip, lamp, state):
 	b = Bridge(ip)
 	b.connect()
 	if state == 'on':
@@ -19,13 +19,20 @@ def send_to_lamp(ip, lamp, state):
 	b.set_light(int(lamp), 'on', bool(onoff))
 	print "At "+ip+" turning lamp #"+lamp+" "+state
 
+def set_brightness(ip, lamp, brightness):
+   b = Bridge(ip)
+   b.connect()
+   b.set_light(int(lamp), 'bri', brightness)
+
+
 def main(argv):
    ip = ''
    lamp = ''
+   brightness = '999'
    try:
-       opts, args = getopt.getopt(argv,"hi:n:s:",["ip=","number=","state="])
+       opts, args = getopt.getopt(argv,"hi:n:s:b:",["ip=","number=","state=","brightness="])
    except getopt.GetoptError:
-      print 'test.py -i <ip> -n <lamp number> -s <on/off>'
+      print 'test.py -i <ip> -n <lamp number> -s <on/off> -b <brightness 0-254>'
       sys.exit(2)
    for opt, arg in opts:
       if opt == '-h':
@@ -36,8 +43,11 @@ def main(argv):
       elif opt in ("-n", "--number"):
          lamp = arg
       elif opt in ("-s", "--state"):
-      	state = arg
-	send_to_lamp(ip, lamp, state)
+         state = arg
+         set_state(ip, lamp, state)
+      elif opt in ("-b", "--brightness"):
+         brightness = arg
+         set_brightness(ip, lamp, int(brightness))
 
 if __name__ == "__main__":
    main(sys.argv[1:])
