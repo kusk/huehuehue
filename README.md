@@ -10,3 +10,10 @@ The script is working by using phue - https://github.com/studioimaginaire/phue
 For now the script is very basic and can only turn a specific light on and off.
 
 You have to authorize the client with the hub by pressing the Connect-button.
+
+# Syntax
+Set state(on/off)
+python huehuehue.py -i <ip> -n <lamp number> -s <on/off>
+
+Set brightness
+python huehuehue.py -i <ip> -n <lamp number> -b <1-254>
