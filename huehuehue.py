@@ -60,7 +60,7 @@ def print_lamps(ip):
       
 
 
-
+# main loop
 def main(argv):
    ip = ''
    lamp = ''
